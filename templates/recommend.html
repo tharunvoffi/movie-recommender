@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recommend</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav>
+  <strong>🎬 MovieBot</strong>
+  <div>
+    <a href="/">Home</a>
+    <a href="/recommend">Recommend</a>
+    <a href="/about">About</a>
+  </div>
+</nav>
+
+<section class="recommender">
+  <h1>Semantic Movie Recommendations</h1>
+
+  <input
+    id="movieInput"
+    type="text"
+    placeholder="Try: Inception, Titanic, Interstellar, Avatar..."
+  >
+  <button onclick="getRecommendations()">Recommend</button>
+
+  <div id="loader" class="loader" style="display:none;"></div>
+
+  <!-- RESULTS HIDDEN BY DEFAULT -->
+  <div id="resultsSection" style="display:none;">
+
+    <h2>🧠 Content-Based</h2>
+    <div id="semanticResults" class="results"></div>
+
+    <h2>🎭 Genre Baseline</h2>
+    <div id="genreResults" class="results"></div>
+
+  </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
