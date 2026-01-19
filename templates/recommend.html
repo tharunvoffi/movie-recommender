@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Recommend</title>
+  <title>Explore Movies</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -10,34 +10,37 @@
   <strong>🎬 MovieBot</strong>
   <div>
     <a href="/">Home</a>
-    <a href="/recommend">Recommend</a>
+    <a href="/recommend">Explore</a>
     <a href="/about">About</a>
   </div>
 </nav>
 
-<section class="recommender">
-  <h1>Semantic Movie Recommendations</h1>
+<main>
 
-  <input
-    id="movieInput"
-    type="text"
-    placeholder="Try: Inception, Titanic, Interstellar, Avatar..."
-  >
-  <button onclick="getRecommendations()">Recommend</button>
+  <section class="search">
+    <h1>Discover Movies by Story</h1>
 
-  <div id="loader" class="loader" style="display:none;"></div>
+    <div class="search-box">
+      <input id="movieInput" placeholder="Inception, Interstellar, Avatar…" />
+      <button onclick="getRecommendations()">Search</button>
+    </div>
+  </section>
 
-  <!-- RESULTS HIDDEN BY DEFAULT -->
-  <div id="resultsSection" style="display:none;">
+  <section id="results" class="results" style="display:none;">
+    <div id="aiMessage" class="ai"></div>
 
-    <h2>🧠 Content-Based</h2>
-    <div id="semanticResults" class="results"></div>
+    <h2 class="section-title">🧠 Story Similar</h2>
+    <div id="semantic" class="grid"></div>
 
-    <h2>🎭 Genre Baseline</h2>
-    <div id="genreResults" class="results"></div>
+    <h2 class="section-title">🎭 Genre Similar</h2>
+    <div id="genre" class="grid"></div>
+  </section>
 
-  </div>
-</section>
+</main>
+
+<footer>
+  🚀 Designed for discovery · Powered by AI
+</footer>
 
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>

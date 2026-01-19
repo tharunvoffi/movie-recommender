@@ -1,28 +1,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>About</title>
+  <title>About MovieBot</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+
 <nav>
   <strong>🎬 MovieBot</strong>
   <div>
     <a href="/">Home</a>
-    <a href="/recommend">Recommend</a>
+    <a href="/recommend">Explore</a>
     <a href="/about">About</a>
   </div>
 </nav>
 
-<section class="about">
+<section class="search">
   <h1>About MovieBot</h1>
-  <p>
-    MovieBot is a semantic, content-based movie recommendation system.
-    It uses sentence embeddings to recommend movies based on story similarity
-    rather than genre labels.
-  </p>
+  <p class="about-subtitle">Understanding the intelligence behind semantic movie discovery</p>
 </section>
 
-<footer>🚀 Movie Recommender</footer>
+<section class="results">
+
+  <div class="ai">
+    🎥 Movie discovery powered by meaning, not metadata
+  </div>
+
+  <h2 class="section-title">🚀 What is MovieBot?</h2>
+  <p class="context">
+    MovieBot is an AI-powered semantic movie recommendation system designed to help users
+    discover films based on <b>story, themes, and narrative meaning</b> rather than
+    simple genre tags or popularity metrics.
+  </p>
+  <p class="context">
+    Instead of asking <i>“What genre do you want?”</i>, MovieBot asks:
+    <b>“What kind of story are you in the mood for?”</b>
+  </p>
+
+  <h2 class="section-title">🧠 How It Works</h2>
+  <p class="context">
+    Each movie is transformed into a numerical representation using
+    <b>semantic embeddings</b> derived from its plot description.
+    These embeddings capture narrative elements such as:
+  </p>
+
+  <div class="grid">
+    <div class="movie-card">🎭 Themes & Emotions</div>
+    <div class="movie-card">🧩 Plot Structure</div>
+    <div class="movie-card">⚔️ Conflict & Stakes</div>
+    <div class="movie-card">🌌 Setting & Tone</div>
+  </div>
+
+  <p class="context">
+    When you search for a movie, MovieBot uses <b>vector similarity search</b> (FAISS)
+    to instantly retrieve films with the most similar narrative meaning.
+  </p>
+
+  <h2 class="section-title">🎯 Why Semantic Recommendations?</h2>
+  <p class="context">
+    Traditional recommenders rely heavily on genre labels or collaborative filtering,
+    which often leads to repetitive or shallow suggestions.
+  </p>
+
+  <div class="grid">
+    <div class="movie-card">❌ Genre-only labels</div>
+    <div class="movie-card">❌ Popularity bias</div>
+    <div class="movie-card">❌ Repetitive results</div>
+  </div>
+
+  <p class="context">
+    MovieBot solves this by focusing on <b>what a movie is actually about</b>,
+    leading to more diverse, surprising, and meaningful recommendations.
+  </p>
+
+  <h2 class="section-title">🛠️ Technology Stack</h2>
+  <div class="grid">
+    <div class="movie-card">🐍 Python + Flask</div>
+    <div class="movie-card">🧠 Sentence Embeddings</div>
+    <div class="movie-card">⚡ FAISS Vector Search</div>
+    <div class="movie-card">📊 TF-IDF Genre Baseline</div>
+    <div class="movie-card">🎬 TMDB Dataset</div>
+    <div class="movie-card">🎨 Custom UI / UX</div>
+  </div>
+
+  <h2 class="section-title">✨ Vision</h2>
+  <p class="context">
+    MovieBot is built as a foundation for next-generation content discovery.
+    The same approach can be extended to:
+  </p>
+
+  <div class="grid">
+    <div class="movie-card">📺 TV Shows</div>
+    <div class="movie-card">🎧 Podcasts</div>
+    <div class="movie-card">📚 Books</div>
+    <div class="movie-card">🎮 Games</div>
+  </div>
+
+  <p class="context">
+    The long-term vision is to create a universal <b>semantic discovery engine</b>
+    for storytelling across all forms of media.
+  </p>
+
+</section>
+
+<footer>
+  🚀 Built with AI · Designed for discovery · Powered by curiosity
+</footer>
+
 </body>
 </html>

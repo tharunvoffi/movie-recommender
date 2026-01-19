@@ -1,40 +1,59 @@
-async function getRecommendations() {
-  const title = document.getElementById("movieInput").value;
-  const semanticDiv = document.getElementById("semanticResults");
-  const genreDiv = document.getElementById("genreResults");
-  const loader = document.getElementById("loader");
-  const resultsSection = document.getElementById("resultsSection");
+document.addEventListener("DOMContentLoaded", () => {
 
-  semanticDiv.innerHTML = "";
-  genreDiv.innerHTML = "";
-  loader.style.display = "block";
+  const input = document.getElementById("movieInput");
+  if (!input) return; // ✅ prevents errors on Home/About
 
-  const res = await fetch("/recommend", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ title })
+  const semantic = document.getElementById("semantic");
+  const genre = document.getElementById("genre");
+  const ai = document.getElementById("aiMessage");
+  const results = document.getElementById("results");
+
+  /* 🔑 ENTER KEY SUPPORT */
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      getRecommendations();
+    }
   });
 
-  const data = await res.json();
-  loader.style.display = "none";
+  window.getRecommendations = async function () {
+    const title = input.value.trim();
+    if (!title) return;
 
-  if (data.error) {
-    semanticDiv.innerHTML = `<p>${data.error}</p>`;
-    resultsSection.style.display = "block";
-    return;
-  }
+    semantic.innerHTML = "";
+    genre.innerHTML = "";
+    ai.innerHTML = "";
+    results.style.display = "block";
 
-  resultsSection.style.display = "block";
+    try {
+      const res = await fetch("/recommend", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title })
+      });
 
-  if (data.suggestion) {
-    semanticDiv.innerHTML += `<p>Did you mean <b>${data.suggestion}</b>?</p>`;
-  }
+      const data = await res.json();
 
-  data.semantic.forEach((movie, i) => {
-    semanticDiv.innerHTML += `<div class="movie">${i + 1}. ${movie}</div>`;
-  });
+      if (data.error) {
+        ai.innerHTML = `<div class="ai">${data.error}</div>`;
+        return;
+      }
 
-  data.genre.forEach((movie, i) => {
-    genreDiv.innerHTML += `<div class="movie">${i + 1}. ${movie}</div>`;
-  });
-}
+      if (data.suggestion) {
+        ai.innerHTML = `<div class="ai">Showing results for ${data.suggestion}</div>`;
+      }
+
+      data.semantic.forEach(movie => {
+        semantic.innerHTML += `<div class="movie-card">${movie}</div>`;
+      });
+
+      data.genre.forEach(movie => {
+        genre.innerHTML += `<div class="movie-card">${movie}</div>`;
+      });
+
+    } catch (err) {
+      ai.innerHTML = `<div class="ai">Something went wrong</div>`;
+      console.error(err);
+    }
+  };
+});

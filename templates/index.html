@@ -5,21 +5,30 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-  <nav>
-    <strong>🎬 MovieBot</strong>
-    <div>
-      <a href="/">Home</a>
-      <a href="/recommend">Recommend</a>
-      <a href="/about">About</a>
-    </div>
-  </nav>
 
+<nav>
+  <strong>🎬 MovieBot</strong>
+  <div>
+    <a href="/">Home</a>
+    <a href="/recommend">Explore</a>
+    <a href="/about">About</a>
+  </div>
+</nav>
+
+<main>
   <section class="hero">
-    <h1>Find Movies by Story, Not Genre</h1>
-    <p>Semantic movie recommendations using AI</p>
-    <a href="/recommend" class="btn">Start</a>
+    <h1>Discover Movies by Story</h1>
+    <p>
+      A semantic movie recommendation engine that understands
+      narrative meaning — not just genres.
+    </p>
+    <a href="/recommend" class="btn">Start Exploring</a>
   </section>
+</main>
 
-  <footer>🚀 Smart Movie Recommender</footer>
+<footer>
+  © MovieBot · Intelligent Movie Discovery
+</footer>
+
 </body>
 </html>
